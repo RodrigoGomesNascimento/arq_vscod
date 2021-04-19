@@ -7,4 +7,12 @@ https://www.youtube.com/watch?v=RrSLLDC3ys0&t=665s
 Anotações sobre a criação.
 Foram criadas as pastas dentro do git para tentar atualizar e trabalhar em vários pcs, pois não tenho um fixo
 comandos utilizados django-admin startproject (nome do projeto) cria a pasta onde ficará o projeto e o manage.py responsável por startar o projeto.
-Para criar as tabelas na base de dados rodorar manage.py migrate
+Para criar as tabelas na base de dados rodorar manage.py migrate dado o comando irá criar as tabelas no sqlite
+mas ainda não tem usuario.
+rodando o comando python manage.py runserver e acessando o /admin vc vera o servidor 
+mas tem que criar um user com python manage.py createuser
+Entrar no model para criar as tabelas.
+depois de criar as tabelas e antes colocar a pastas criada do app no caso a 'core' no settings do projeto e depois rodar o comando python manage.py makemigrations core. vai criar um arquivo no migrate 
+Apos rodar o comando python manage.py migrate core 0001(nome do arquivo onde esta o bd ou tb q ira subir  para o gerenciador do bd) se for um bd de produção e quiser ver o slq antes de subir rodar o comando 
+python manage.py sqlmigrate core 0001
+para aparecer no admin tem que registrar no admin.py
