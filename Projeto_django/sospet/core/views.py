@@ -20,6 +20,9 @@ def login_user(request):
 def index(request):
     return render(request, 'index.html')
 
+def list_all_pets(request):
+    return render(request, 'list.html')
+
 def logout_user(request):
     logout(request)
     return redirect('/login/')

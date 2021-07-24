@@ -19,6 +19,7 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pet/all',views.list_all_pets),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
     path('logout/', views.logout_user),
