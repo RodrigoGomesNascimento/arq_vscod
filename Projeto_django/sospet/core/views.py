@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 #terei com o request todas as requisições enviadas.
-
+from .models import Pet
 
 
 def login_user(request):
@@ -17,11 +17,9 @@ def login_user(request):
 
 
 @login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
-def index(request):
-    return render(request, 'index.html')
-
 def list_all_pets(request):
-    return render(request, 'list.html')
+    pet = Pet.objects.filter(active=True) # isso para importar os campos ativos da tabela. E uma query.
+    return render(request, 'list.html' , {'pet':pet})# tem que colocar no render para poder aparecer.Criando um dicionario.
 
 def logout_user(request):
     logout(request)
