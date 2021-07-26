@@ -28,3 +28,6 @@ outro detalhe foi o decoretor para não deixar acessar direto o index.
 O index.html foi apagado e para poder colocar a list.html como index teve que importar o generic (from django.views.generic import RedirectView) no urls.py e tem que mudar essa linha deixando deste jeito man path('', RedirectView.as_view(url='pet/all'))
 Na view eu import a tabela PET E COLOCO OS ATIVOS.
 Para colocar as imagens tem que ir no settings e criar o media root
+
+Para criar uma nova pagina o ideal é ir na url e criar um novo caminho path.
+Depois vai no core views.py e cria o metodo.
