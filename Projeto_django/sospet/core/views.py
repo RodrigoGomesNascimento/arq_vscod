@@ -19,7 +19,7 @@ def login_user(request):
 @login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
 def list_all_pets(request):
     pet = Pet.objects.filter(active=True) # isso para importar os campos ativos da tabela. E uma query.
-    return render(request, 'list.html' , {'pet':pet})# tem que colocar no render para poder aparecer.Criando um dicionario.
+    return render(request, 'list.html', {'pet':pet})# tem que colocar no render para poder aparecer.Criando um dicionario.
 
 #nova pagina do cad usuarios.
 def list_user_pets(request):

@@ -22,13 +22,13 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pet/all',views.list_all_pets),
+    path('pet/all/',views.list_all_pets),
     path('pet/user/', views.list_user_pets),#nova pagina.
-    path('pet/detail/<id>', views.pet_detail), #o id vai ser passado como parametro por causa do sinal <> que a views intrepreta dessa forma.
+    path('pet/detail/<id>/', views.pet_detail), #o id vai ser passado como parametro por causa do sinal <> que a views intrepreta dessa forma.
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
     path('logout/', views.logout_user),
-    path('', RedirectView.as_view(url='pet/all'))
+    path('', RedirectView.as_view(url='pet/all/'))
     
 ]
 
