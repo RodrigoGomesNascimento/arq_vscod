@@ -16,10 +16,26 @@ def login_user(request):
 
 
 
-@login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
+@login_required(login_url='/login/')#tem que importar e para segurança se nao fica logado sem logar
 def list_all_pets(request):
     pet = Pet.objects.filter(active=True) # isso para importar os campos ativos da tabela. E uma query.
     return render(request, 'list.html', {'pet':pet})# tem que colocar no render para poder aparecer.Criando um dicionario.
+
+@login_required(login_url='/login/')
+def register_pet(request):
+    return render(request, 'register-pet.html')
+
+@login_required(login_url='/login/')
+def set_pet(request):
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    city = request.POST.get('city')
+    description = request.POST.get('description')
+    photo = request.FILES.get('file')
+    user = request.user
+    pet = Pet.objects.create(email=email, phone=phone, city=city, description=description,photo=photo, user=user)
+    url = '/pet/detail/{}/'.format(pet.id)
+    return redirect(url)
 
 #nova pagina do cad usuarios.
 def list_user_pets(request):
@@ -41,8 +57,6 @@ def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username)
-        print(password)
         user = authenticate(username = username, password = password)
         if user is not None:
             login(request, user)
