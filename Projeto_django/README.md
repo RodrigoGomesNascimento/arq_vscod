@@ -25,3 +25,4 @@ foi encontrado o erro era o caminho if user is not None:
 também foi criado o logout e necessario a importação de outras biblitecas, bem como a criação do metodo
 outro detalhe foi o decoretor para não deixar acessar direto o index.
 @login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
+Uma das vantagens do django é criar os templates em camadas, onde as mais estaticas são feitas uma unica vez e reaproveitadas para outras, no caso do footer, header.
