@@ -16,8 +16,8 @@
             <p><b>Tel.: </b>{{pet.phone}}</p>
             <p><b>Email: </b>{{pet.email}}</p>
 
-            {% if requestc.user == pet.user %}
-                <a href="#">
+            {% if request.user == pet.user %}
+                <a href="">
                 <button type="button" class="btn btn-primary" >Alterar</button>
                 </a>
                 <button type="button" class="btn btn-danger">Exluir</button>
