@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 
+
 # Create your models here.
 #criando as colunas da tabela do bd
 # ver por que a class tem q ser criada como foi abaixo.

@@ -8,7 +8,10 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 #terei com o request todas as requisições enviadas.
+<<<<<<< HEAD
 #criar query para trazer models do bd
+=======
+>>>>>>> 855cadc917d2b3fe6329a4e6708279fcab1c84a4
 from .models import Pet
 
 
@@ -18,6 +21,7 @@ def login_user(request):
 
 
 @login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
+<<<<<<< HEAD
 
 #agora chamo a query
 
@@ -27,6 +31,21 @@ def list_all_pets(request):
     #print(pet.query)
     return render(request, 'list.html', {'pet':pet})
     
+=======
+def list_all_pets(request):
+    pet = Pet.objects.filter(active=True) # isso para importar os campos ativos da tabela. E uma query.
+    return render(request, 'list.html', {'pet':pet})# tem que colocar no render para poder aparecer.Criando um dicionario.
+
+#nova pagina do cad usuarios.
+def list_user_pets(request):
+    pet = Pet.objects.filter(active=True, user=request.user)
+    return render(request, 'list.html', {'pet':pet})
+
+def pet_detail(request, id):
+    pet = Pet.objects.get(active=True, id=id)
+    return render(request,'pet.html', {'pet':pet})
+
+>>>>>>> 855cadc917d2b3fe6329a4e6708279fcab1c84a4
 
 def logout_user(request):
     logout(request)

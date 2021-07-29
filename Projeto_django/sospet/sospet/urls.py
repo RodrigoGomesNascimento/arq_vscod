@@ -22,6 +22,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('pet/all/', views.list_all_pets),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
@@ -31,3 +32,17 @@ urlpatterns = [
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+    path('pet/all/',views.list_all_pets),
+    path('pet/user/', views.list_user_pets),#nova pagina.
+    path('pet/detail/<id>/', views.pet_detail), #o id vai ser passado como parametro por causa do sinal <> que a views intrepreta dessa forma.
+    path('login/', views.login_user),
+    path('login/submit', views.submit_login),
+    path('logout/', views.logout_user),
+    path('', RedirectView.as_view(url='pet/all/'))
+    
+]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 855cadc917d2b3fe6329a4e6708279fcab1c84a4
