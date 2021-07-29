@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 #terei com o request todas as requisições enviadas.
-
+#criar query para trazer models do bd
+from .models import Pet
 
 
 def login_user(request):
@@ -17,8 +18,15 @@ def login_user(request):
 
 
 @login_required(login_url='/login')#tem que importar e para segurança se nao fica logado sem logar
-def index(request):
-    return render(request, 'index.html')
+
+#agora chamo a query
+
+def list_all_pets(request):
+    #busco no bd que está no model.py
+    pet = Pet.objects.filter(active=True)
+    #print(pet.query)
+    return render(request, 'list.html', {'pet':pet})
+    
 
 def logout_user(request):
     logout(request)
@@ -30,8 +38,6 @@ def submit_login(request):
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username)
-        print(password)
         user = authenticate(username = username, password = password)
         if user is not None:
             login(request, user)

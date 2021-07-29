@@ -12,7 +12,7 @@ class Pet(models.Model):
     phone = models.CharField(max_length=11)
     email = models.EmailField()
     begin_date = models.DateTimeField(auto_now_add=True)# vair criar o horario que foi inserido os dados na tabela e incrementado automatico pelo auto
-    photo = models.ImageField() # no banco fica o caminho da foto por isso esse imagefield
+    photo = models.ImageField(upload_to='pet') # no banco fica o caminho da foto por isso esse imagefield
     active = models.BooleanField(default=True)#desafio para acertar o modo sempre que for criado vai estar ativo.
     user = models.ForeignKey(User, on_delete=models.CASCADE)# pois o django ja cria a tabela de user e vou importar para saber qual usuario criou o pet.
     # e vou deletar em cascata onde deletou o user deleto os pets dele.
