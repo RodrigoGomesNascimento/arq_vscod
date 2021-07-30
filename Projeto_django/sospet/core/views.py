@@ -37,6 +37,14 @@ def set_pet(request):
     url = '/pet/detail/{}/'.format(pet.id)
     return redirect(url)
 
+@login_required(login_url='/login/')
+def delete_pet(request, id):
+    pet = Pet.objects.get(id=id)
+    if pet.user == request.user:
+        pet.delete()
+    return redirect('/')
+
+
 #nova pagina do cad usuarios.
 def list_user_pets(request):
     pet = Pet.objects.filter(active=True, user=request.user)
